@@ -3,47 +3,65 @@
 intro goes here. 
 
 \section{Science Raft Towers}
-Unlike most astronomical imagers, the Large Survey Synoptic Telescope (LSST) mosaic camera will be constructed from 21 identical modules, known as “rafts,” Science Rafts, or Raft Tower Modules (RTMs). This choice is motivated by the large area of the focal plane (3217 cm$^2$ unvignetted field) and issues of integration, test, and maintainability. The alternative option, a monolithic structure supporting the entire complement of sensors and electronics, leads to difficulty accessing the central portion of the array during construction and repair. Each raft can be an autonomously operated as fully functional (and testable) camera. In view of the long production time for the charge-coupled device (CCD) sensors, series production and testing of the rafts streamlines and reduces risk for the project. By maintaining a set of hot spares, the mean time to repair the camera in the event of sensor or electronics failures can be minimized. A diagram of the focal plane layout is shown in Figure 10-1.
+Unlike most astronomical imagers, the Large Survey Synoptic Telescope (LSST) mosaic camera will be constructed from 21 identical modules, known as “rafts,” Science Rafts, or Raft Tower Modules (RTMs). This choice is motivated by the large area of the focal plane (3217 cm$^2$ unvignetted field) and issues of integration, test, and maintainability. The alternative option, a monolithic structure supporting the entire complement of sensors and electronics, leads to difficulty accessing the central portion of the array during construction and repair. Each raft can be an autonomously operated as fully functional (and testable) camera. In view of the long production time for the charge-coupled device (CCD) sensors, series production and testing of the rafts streamlines and reduces risk for the project. By maintaining a set of hot spares, the mean time to repair the camera in the event of sensor or electronics failures can be minimized. A diagram of the focal plane layout is shown in Figure \ref{fig:Fig1}.
  
-Figure 10-1: Focal plane organization: science sensors (blue), guide sensors (yellow), wavefront sensors (green), Science Raft boundaries (red).
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure1}
+\caption{Focal plane organization: science sensors (blue), guide sensors (yellow), wavefront sensors (green), Science Raft boundaries (red).}
+\label{fig:Fig1}
+\end{center}
+\end{figure}
  
 \section{Science Raft Requirements}
 The Science Raft Tower Module must provide: 
-•	Precise mechanical location and support for the CCD array 
-•	Electronic support functions to control and read out the CCDs
-•	Thermal management of the CCDs and electronics
+\begin{itemize}
+\item{} Precise mechanical location and support for the CCD array 
+\item{} Electronic support functions to control and read out the CCDs
+\item{} Thermal management of the CCDs and electronics.
+\end{itemize}
+
 Mechanical requirements are extremely stringent and include locating the CCD imaging surfaces to within a narrow flatness envelope, with gaps of 0.150 mm between adjacent CCDs on a single raft and 0.250 mm between CCDs on adjacent rafts. As a result of the fine segmentation of the CCDs, the RTM has to implement all electronic functions of a 144-channel CCD controller in a volume contained within the projected footprint of the Raft. Although low-power application specific integrated circuits (ASICs) are used, the total power dissipation from an RTM is significant, and that power must be removed from the cryostat through adequate thermal paths. Finally, the imaging surfaces of the CCDs must be protected from contamination by condensable materials in the electronics enclosures as well as conductive materials contacting the exposed electronic connections.
 
 \section{Science Raft Tower Module Design Description}
-The Science Raft, shown in Figure 10-2, is the modular building block of the camera focal plane and consists of three major sub-assemblies:
-•	The Raft Sensor Assembly (RSA) – A 3 x 3 mosaic of science CCDs in precision packages, mounted on a silicon carbide baseplate. The RSA also includes temperature sensors, resistive heaters, and flexible electrical and thermal connections.
-•	The Raft Electronics Crate (REC) – Houses three circuit boards and contains copper planes providing the thermal path for cooling the RSA and the CCDs.
-•	Three Raft Electronics Boards (REBs) – Contains custom video processing and clock/bias buffering electronics plus video digitizing, clock sequencing, bias generation, temperature sensing, and interfacing to the control and data acquisition systems. 
-All components of the RTM are contained within the camera cryostat vacuum space. The RSA and REC are maintained at an operating temperature of around -100 C. This temperature is chosen as a compromise between sensor dark current and near infrared (NIR) quantum efficiency (QE). The REBs operate at a warmer temperature, to reduce the load on the cryostat cooling system and to allow the use of standard commercial electronics. The power dissipated on the REBs is extracted via a coldplate that is held at -40 C. To prevent volatile organic contaminants (VOCs) from condensing on the CCD imaging surfaces several precautions are taken: The circuit boards and components are tested for low outgassing of volatiles, and CCDs are never allowed to be the coldest surfaces in the cryostat. 
+The Science Raft, shown in Figure \ref{fig:Fig2}, is the modular building block of the camera focal plane and consists of three major sub-assemblies:
+\begin{enumerate}
+\item{}The Raft Sensor Assembly (RSA) – A 3 x 3 mosaic of science CCDs in precision packages, mounted on a silicon carbide baseplate. The RSA also includes temperature sensors, resistive heaters, and flexible electrical and thermal connections.
+\item{}The Raft Electronics Crate (REC) – Houses three circuit boards and contains copper planes providing the thermal path for cooling the RSA and the CCDs.
+\item{}Three Raft Electronics Boards (REBs) – Contains custom video processing and clock/bias buffering electronics plus video digitizing, clock sequencing, bias generation, temperature sensing, and interfacing to the control and data acquisition systems. 
+\end{enumerate}
+
+All components of the RTM are contained within the camera cryostat vacuum space. The RSA and REC are maintained at an operating temperature of around $-$100\degsym C. This temperature is chosen as a compromise between sensor dark current and near infrared (NIR) quantum efficiency (QE). The REBs operate at a warmer temperature, to reduce the load on the cryostat cooling system and to allow the use of standard commercial electronics. The power dissipated on the REBs is extracted via a coldplate that is held at \
+$-$40\degsym  C. To prevent volatile organic contaminants (VOCs) from condensing on the CCD imaging surfaces several precautions are taken: The circuit boards and components are tested for low outgassing of volatiles, and CCDs are never allowed to be the coldest surfaces in the cryostat. 
  
-  
-Figure 10-2: (top) Exploded and (bottom) perspective views of LSST science raft 
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure2}
+\caption{(top) Exploded and (bottom) perspective views of LSST science raft .}
+\label{fig:Fig2}
+\end{center}
+\end{figure}
 
 \section{Raft Tower Electronics}
 The function of the Science Raft Electronics is to fully support the nine CCDs that reside on a raft. It must provide all biasing and clocking signals, amplification and low noise analog signal processing, digitization, data collection, and transmission of image and metadata to the camera’s Data Acquisition (DAQ) system. Finally, it must provide flexible timing and control in a manner that is precise, predictable, and programmable under control of the Camera Control System. Some key performance parameters are summarized in Table 10-1.
 
-Table 10-1: Key Science Raft electronics specifications
-Specification 	Value 
-Readout time 	2 seconds  
-Read noise 	9 electrons RMS 
-Blooming full well capacity 	Not to exceed 175,000 electrons 
-Dynamic range 	16 bits 
-Digitization	18 bits
-Crosstalk 	2x10-3  
-Gain stability over one hour
-0.1\% 
-Linearity	3\% 
-Focal plane temperature measurement absolute value 	$\pm$1.5C 
-Focal plane temperature measurement stability 	$\pm$0.15C 
-Focal plane temperature resolution (least significant bit) 
-less than or equal to 0.05 C 
-Contribution to image quality, full width half maximum (FWHM)	0.3 arcseconds
-Vertical range for 95\% of the pixels on a raft	$\pm$10 $\mu$m relative to height datum
+%Table 10-1: Key Science Raft electronics specifications
+%Specification 	Value 
+%Readout time 	2 seconds  %
+%Read noise 	9 electrons RMS %
+%Blooming full well capacity 	Not to exceed 175,000 electrons %
+%Dynamic range 	16 bits %
+%Digitization	18 bits%
+%Crosstalk 	2x10-3  %
+%Gain stability over one hour
+%0.1\% %
+%Linearity	3\% %
+%Focal plane temperature measurement absolute value 	$\pm$1.5C %
+%Focal plane temperature measurement stability 	$\pm$0.15C %
+%Focal plane temperature resolution (least significant bit) 
+%less than or equal to 0.05 C %
+%Contribution to image quality, full width half maximum (FWHM)	0.3 arcseconds
+%Vertical range for 95\% of the pixels on a raft	$\pm$10 $\mu$m relative to height datum
 Each of the sensors in the Science Raft comprises 4K x 4K pix, or 16 Mpix total. To simultaneously meet the read time and read noise specifications, the sensors have been divided into 16 segments of 1 Mpix, each with its own output amplifier. This allows readout to proceed at an average rate of ~550 kpix/s, a rate which has been shown to be compatible with the noise requirement. This segmentation results in 144 parallel streams of image data for each raft. The raft dimensions of 127 mm x 127 mm results in extremely tight packaging requirements for the 144 parallel channels of analog signal processing, analog to digital conversion, and data collection. 
 The REBs also have the responsibility for monitoring and reporting a variety of metadata such as supply voltages and currents, precision temperature measurements, and operating raft heaters to maintain focal plane temperature. In addition, a significant ability to diagnose problems in-situ is part of the design. 
 Each Science Raft contains a 3 x 3 array of science sensors and forms an integral unit along with its accompanying Science Raft electronic package. The focal plane consists of 21 such Science Raft and four Corner Rafts (described in Chapter 11). 
@@ -51,13 +69,26 @@ Each Science Raft contains a 3 x 3 array of science sensors and forms an integra
 \subsection{Electronics architecture}
 The functionality of the Science Raft electronics is contained on three REBs which hold the analog functions and digital electronics that provide clocks and biases to three CCDs and handle the 48 channels of video output from those CCDs. Each REB also provides power regulation, monitoring of voltages and currents and conversion of the 48 streams of digitized video data into a single high speed link that is connected to the DAQ system as shown in Figure 10-3. 
  
-Figure 10-3: REB block diagram
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure3}
+\caption{Raft Electronics Board block diagram.}
+\label{fig:Fig3}
+\end{center}
+\end{figure}
+
 A significant feature of the electronics is that each raft, and indeed each REB, can function as an autonomous readout and control system for nine (or three) CCDs. The raft and three REBs can function as a fully autonomous 144 Mpix camera, when connected to an LSST-style DAQ system.
 To mitigate potential crosstalk and pickup noise issues, all 21 Science Rafts in the focal plane operate synchronously. The requisite synchronicity is maintained by distributing a master clock for the entire focal plane. A real time microcontroller, implemented in a Xilinx field-programmable gate array (FPGA) on each REB, fans out timing and gating signals to the custom ASICs and commercial analog-to-digital converters (ADCs) at an accuracy of order a few nanoseconds and with a jitter less than 100 ps. 
-Focusing on the electronics, a block diagram of the overall mechanical assembly is shown in Figure 10-4.
-  
-Figure 10-4: Block diagram of overall Science Raft electronics 
+Focusing on the electronics, a block diagram of the overall mechanical assembly is shown in Figure \ref{fig:Fig4}.
 
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure4}
+\caption{Block diagram of overall Science Raft electronics .}
+\label{fig:Fig4}
+\end{center}
+\end{figure}
+  
 \subsection{Electronics physical location}
 
 The physical location of the main electronic systems is a significant issue which is dependent on a number of important factors. One factor is how much, if any, of the electronics should reside within the cryostat, and how much should be placed outside. 
@@ -70,41 +101,66 @@ In the original design, the clock drivers and positive bias generators were impl
 Both the ASPIC and the commercial clock and bias drivers are mounted close to the CCDs on the REB custom printed circuit serving three CCDs – six ASPICs and three bias/clock drivers per REB. The other significant block of the electronics chain, also near the CCDs,  are the 16 current sources which bias the on-CCD source follower transistor. These are implemented using a degenerated junction field-effect transistors (JFETs) whose current can be programmed from 1 – 5 mA. The ASPIC has as its goal to amplify and process the signal coming from the focal plane CCDs in order to optimize the signal-to-noise ratio before digitization. 
 Each ASPIC contains eight channels and is implemented in the AMS 0.35 $\mu$m 5 V CMOS process. The chip operates down to -100C and provides processed differential signals to the commercial 18-bit ADC.
 The architecture chosen for the LSST camera signal processing is a Dual Slope Integrator (DSI). DSI processing combines correlated double sampling with CCD signal integration. Correlated double sampling, by eliminating reset noise, removes kT/C and 1/f noise while integration removes thermal noise. A block diagram of one ASPIC IV (ASPIC version 4) channel is shown in Figure 10-5. 
- 
-Figure 10-5: ASPIC channel block diagram
-The correlated double sampling is performed by integrating first the CCD reference signal just after reset and then the charge signal with opposite polarity during the same integration time as shown in Figure 10-6. The difference of these two integrations provides the CCD signal with the kT/C and 1/f noise contributions suppressed.
- 
-Figure 10-6: Dual slope integration sequence
+
+ \begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure5}
+\caption{ASPIC custom integrated circuit channel block diagram.}
+\label{fig:Fig5}
+\end{center}
+\end{figure}
+
+The correlated double sampling is performed by integrating first the CCD reference signal just after reset and then the charge signal with opposite polarity during the same integration time as shown in Figure \ref{fig:Fig6}. The difference of these two integrations provides the CCD signal with the kT/C and 1/f noise contributions suppressed.
+
+ \begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure6}
+\caption{Dual slope integration sequence.}
+\label{fig:Fig6}
+\end{center}
+\end{figure}
+
 The CCD will be coupled to the ASPIC through an external capacitance. A large clamp switch performs a direct current (DC) level restore regularly; this large switch will provide a very low resistance, around a few hundred Ohms.
 The ASPIC has been designed to meet the following requirements as part of the overall electronics requirements:
-•	Operates as low as $-$100C, with required running temperature  50 – 27 C. Includes a temperature probe.
-•	Noise: At 500 ns integration time for an input of 5.75 $\mu$V/e- and a gain of 1.9 : less than  2.3 e- (requested),  with a goal of 1.8 e-.
-•	Operation at 0.1 – 1 Mpix/s, nominally 550 kpix/s.
-•	0.05\% maximum crosstalk between channels at 550 kpix/s, with a goal of 0.01\%.
-•	Gain: 1.7 – 6, for nominal gain of 1.9 compatible with a 180k e- full well capacity for 5.75 $\mu$V/e-.
-•	0.5\% linearity requested , with a goal of 0.3\%.
-•	Output load: 25 pF in parallel with 1 k$\Omega$.
-•	Differential output: $\pm$2.5 V from central reference voltage.
-•	Operating Voltage: 5 V with central reference of 2.5 V.
-•	Power Dissipation: less than or equal to 38 mW/channel.
+\begin{itemize}
+\item{} Operates as low as $-$100\degsym C, with required running temperature  50 – 27\degsym C. Includes a temperature probe.
+\item{} Noise: At 500 ns integration time for an input of 5.75 $\mu$V/e- and a gain of 1.9 : less than  2.3 e- (requested),  with a goal of 1.8 e-.
+\item{} Operation at 0.1 – 1 Mpix/s, nominally 550 kpix/s.
+\item{} 0.05\% maximum crosstalk between channels at 550 kpix/s, with a goal of 0.01\%.
+\item{} Gain: 1.7 – 6, for nominal gain of 1.9 compatible with a 180k e- full well capacity for 5.75 $\mu$V/e-.
+\item{} 0.5\% linearity requested , with a goal of 0.3\%.
+\item{} Output load: 25 pF in parallel with 1 k$\Omega$.
+\item{} Differential output: $\pm$2.5 V from central reference voltage.
+\item{} Operating Voltage: 5 V with central reference of 2.5 V.
+\item{} Power Dissipation: less than or equal to 38 mW/channel.
+\end{itemize}
 The ASPIC implements a power down feature which allows a significant reduction in dissipated power during non-readout periods (below 2 mW used per channel for the ASPIC in idle mode). Use of this feature is not part of the REB baseline.
 
 \subsection{Raft Electronics Board (REB)}
-The REB that services a set of three of the CCDs on a raft is a complex 16 layer board with blind and buried vias about 104 mm x 419 mm x 2.5 mm with surface mounted active and passive components on both surfaces. The layout of the production REB is shown in Figure 10-7 with component groupings illustrated CCDs, RSA temperature monitors, and  RSA trim heaters connect via 8 miniature connectors on the left edge of the board, power and high-speed digital I/O enter on two connectors on the right. On the left half of the board one can identify the analog and ADC blocks replicated in three identical “stripes” that each serve one of the three CCDs served by the REB.
+The REB that services a set of three of the CCDs on a raft is a complex 16 layer board with blind and buried vias about 104 mm x 419 mm x 2.5 mm with surface mounted active and passive components on both surfaces. The layout of the production REB is shown in Figure \ref{fig:Fig7} with component groupings illustrated CCDs, RSA temperature monitors, and  RSA trim heaters connect via 8 miniature connectors on the left edge of the board, power and high-speed digital I/O enter on two connectors on the right. On the left half of the board one can identify the analog and ADC blocks replicated in three identical “stripes” that each serve one of the three CCDs served by the REB.
  
-Figure 10-7: Layout of the production REB. Thermal and mechanical components not shown
-
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure7}
+\caption{Layout of the production REB. Thermal and mechanical components not shown.}
+\label{fig:Fig7}
+\end{center}
+\end{figure}
+ 
 \subsection{Digitization and Control Electronics}
 The output of the ASPIC is sent as a differential analog signal to a commercial differential buffer and 18 bit ADC for digitization. Rated for 1 MS/s, the ADC is run at the LSST pixel rate of 550 kpix/s. This pixel data is fed as 48 individual serial streams directly into the FPGA where the firmware formats the data into packets to be sent out via the high speed electro-optical link to the back-end DAQ hardware in the LSST Observatory Control Room. At the same time, sequencer logic in the firmware provides direct control of the timing of all the circuitry involved in the video chain – parallel and serial CCD clocks, clamps, resets, ramp up and ramp down for the correlated double sampling in the ASPIC and analog-to-digital conversion – all based upon a common 100 MHz clock distributed from the DAQ hardware to each REB. In addition, there are numerous “housekeeping” tasks such as providing programmable voltages required by the CCD for biasing, monitoring temperature sensors distributed on the REB, raft and sensor packages, and preparing meta-data packets for transmission to the DAQ. Each of the “housekeeping” devices is controlled by an independent serial bus from the FPGA so that it is possible to simultaneously read a precision temperature from a sensor-mounted resistance temperature detector (RTD),set a new clock rail voltage and also monitor the power supply currents.
 In addition to supporting the analog video chain and housekeeping circuits, the REB also provides:
-•	A hardware serial number
-•	DACs and power operational amplifiers (op amps) to control heaters on the RSA
-•	Precision 5 V and 2.5 V references for the video chain
-•	DACs and power op amps to provide rail voltages for the parallel, serial and reset clocks
-•	Heavy internal ground planes plus externally mounted copper bars to carry heat from the REB to the coldplate
-•	Auxiliary ADC channels to measure bias voltages, drain currents and power regulator currents and voltages
-•	Protection circuitry to allow the back substrate bias to be clamped to ground until a logic signal is sent from the FPGA
-•	Diode reverse voltage protection on all sensitive CCD nodes
+\begin{itemize}
+\item{} A hardware serial number
+\item{} DACs and power operational amplifiers (op amps) to control heaters on the RSA
+\item{} Precision 5 V and 2.5 V references for the video chain
+\item{} DACs and power op amps to provide rail voltages for the parallel, serial and reset clocks
+\item{} Heavy internal ground planes plus externally mounted copper bars to carry heat from the REB to the coldplate
+\item{} Auxiliary ADC channels to measure bias voltages, drain currents and power regulator currents and voltages
+\item{} Protection circuitry to allow the back substrate bias to be clamped to ground until a logic signal is sent from the FPGA
+\item{} Diode reverse voltage protection on all sensitive CCD nodes.
+\end{itemize}
+
 In May 2016, the basic functionality of the REB was demonstrated at the three-CCD level, with ASPIC III and CABAC0 of the ASICs. The commercial clock driver circuitry was successfully demonstrated using a modified corner raft board in June of 2015. The production version (REB5) final design and manufacturing readiness review was completed October 2016.
 
 \subsection{Electronics powering}
@@ -112,33 +168,60 @@ The rafts will operate in vacuum with conduction cooling to the coldplate and cr
 
 \section{Science Raft Tower Module Mechanical Design and Analysis}
 
-The raft tower serves several purposes. It is the mechanical structure that houses and protects the REBs which interface with the CCDs; it serves as the heat sink path to the cryofluid plate; it helps to prevent VOCs liberated from the electronics from contaminating the CCD image surface; and, it provides an initial platform on which the RSA sub-assembly can be supported before inclusion in the camera cryostat (see Figure 10-8). The tower concept allows the design of the focal plane to be modular, and it is a replaceable unit within the cryostat. There are 21 science Raft Tower Modules (RTMs) in the focal plane.
+The raft tower serves several purposes. It is the mechanical structure that houses and protects the REBs which interface with the CCDs; it serves as the heat sink path to the cryofluid plate; it helps to prevent VOCs liberated from the electronics from contaminating the CCD image surface; and, it provides an initial platform on which the RSA sub-assembly can be supported before inclusion in the camera cryostat (see Figure \ref{fig:Fig8}). The tower concept allows the design of the focal plane to be modular, and it is a replaceable unit within the cryostat. There are 21 science Raft Tower Modules (RTMs) in the focal plane.
  
-Figure 10-8: Detail of RSA
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure8}
+\caption{Detail of Raft Sensor Assembly (RSA).}
+\label{fig:Fig8}
+\end{center}
+\end{figure}
+
 The tower has a smaller “footprint” than the RSA. While the RSA is 126.5 mm on each side, with the CCDs forming a 127.0 mm square, the tower envelope forms a rectangle 116.0 mm x 117.0 mm. The larger dimension includes the extremities of the spring hold-downs. Note: The grid bay opening is 120.0 mm square. The RTMs total height is 476 mm from the focal plane to its extremities, before installation in the cryostat (final installation of the tower increases this dimension by 4 mm, as the RSA is mated with the kinematic supports on the grid and the REC walls are pulled up off the temporary supports and mated with the cryoplate). Each of the 21 RTMs has a total mass of 9.8 kg.
-The materials for the RTM must satisfy several requirements. Of prime importance is excellent mechanical stability over a temperature range of -100 – 20 ºC, high thermal conductivity, and low thermal expansivity. In addition, low-temperature strength and ductility, good machinability, low density to reduce static and dynamic mass, and availability in small production volumes are also desirable.
+The materials for the RTM must satisfy several requirements. Of prime importance is excellent mechanical stability over a temperature range of $-$100 to  +20\degsym C, high thermal conductivity, and low thermal expansivity. In addition, low-temperature strength and ductility, good machinability, low density to reduce static and dynamic mass, and availability in small production volumes are also desirable.
 
 \subsection{Interaction between Tower and Raft/CCD Sub-assemblies}
 The tower is connected electrically and thermally to the RSA, as shown in Figure 10-9, but it must remain uncoupled from it mechanically as much as possible so that mechanical distortions of the image plane are avoided. Electrically, the mechanical isolation is accomplished by using polyimide film pigtails with copper traces between the CCDs and REBs. Pigtails are permanently affixed or manually connected to the CCD, with a nano-connector at the other end. 
 From the time of RTM construction and until installation in the cryostat is complete, the tower is the sole support for the RSA. During this period, features on the REC walls engage the underside of the baseplate so that there exists a stable, reproducible position of the RSA bearing against the tower in all axes. This is especially important during the RTM installation into or removal from the cryostat in order to avoid collisions with CCDs from previously installed RTMs, as they come in very close proximity.
 
 \subsection{Thermal Connections}
-The total electrical power dissipated on each RTM is approximately 60 W. This comes from four sources: radiated heat from lens L3 onto the focal plane; amplifiers and clocks on each CCD; makeup heaters that regulate the RSA temperature; and, heat generation from electronic functions on the REB.  Nearly all the heat on the REB (operating between -20 – 8 C), is removed via conduction into copper bars attached to the REB, and then through semi-flexible straps to the coldplate maintained at -40 C. A small amount of heat leaks into the RSA via the flexible circuits and the heater wires. The heat on the RSA (operating at or near -100 C) which is from the CCD amplifiers and clocks, radiation from lens L3, and the heat leak from the electronics via the flexible circuit shown in Figure 10-8, is removed by flexible conductors, and then transferred by conduction through the REC walls, then to the cryoplate maintained at -130 C, and finally into the cryofluid.
+The total electrical power dissipated on each RTM is approximately 60 W. This comes from four sources: radiated heat from lens L3 onto the focal plane; amplifiers and clocks on each CCD; makeup heaters that regulate the RSA temperature; and, heat generation from electronic functions on the REB.  Nearly all the heat on the REB (operating between 
+$-$20 – +8\degsym C), is removed via conduction into copper bars attached to the REB, and then through semi-flexible straps to the coldplate maintained at -40 C. A small amount of heat leaks into the RSA via the flexible circuits and the heater wires. The heat on the RSA (operating at or near $-$100\degsym C) which is from the CCD amplifiers and clocks, radiation from lens L3, and the heat leak from the electronics via the flexible circuit shown in Figure 10-8, is removed by flexible conductors, and then transferred by conduction through the REC walls, then to the cryoplate maintained at $-$130\degsym C, and finally into the cryofluid.
 The REC walls are thick copper plates to allow good heat transfer from the flexible thermal straps on the RSA to the bolted interface at the cryoplate. Bolted connections will have Belleville and lock washers to accommodate thermal contraction and cyclic thermal ratcheting effects.
  
- 
-Figure 10-9: Thermo-mechanical mounting details for RSA and RTM
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure9}
+\caption{Thermo-mechanical mounting details for RSA and RTM.}
+\label{fig:Fig9}
+\end{center}
+\end{figure}
+
 The components on the REBs generate approximately 180 W of power (all three boards) that is removed through the cooling bars into the coldplate. The board material is an FR4/copper sandwich to aid in lateral heat conduction. The cold bars are attached to the coldplate with semi-flexible straps. Mechanical compliance is obtained by using sliding clamped joints between each board at its edges. 
-Finite element analysis (FEA) modeling of the temperature distribution across the REB during operation (shown in Figure 10-10)was generated using a prototype REB design, and results matched measured REB2 values within 5 C. 
+Finite element analysis (FEA) modeling of the temperature distribution across the REB during operation (shown in Figure \ref{fig:Fig10})was generated using a prototype REB design, and results matched measured REB2 values within 5\degsym C. 
  
-Figure 10-10: FEA model of REB thermal design, showing equilibrium temperature distribution for coldplate held at -40 C
+ \begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure10}
+\caption{FEA model of REB thermal design, showing equilibrium temperature distribution for coldplate held at $-$40\degsym C.}
+\label{fig:Fig10}
+\end{center}
+\end{figure}
 
 \subsection{Science Raft Hold-Down Design}
-The RSA is designed to be supported in the cryostat on a three-ball kinematic mount. The balls and their cup mounts are an integral part of the cryostat support grid, whose lattice-like structure forms “bays” into which each RTM is installed. V-grooves on the three mounts of the baseplate engage these balls. A total spring load equivalent to 5g is imposed on the RSA to assure unchanging contact pressure in all camera attitudes and slewing motions, with this load being applied directly over the center of each ball to eliminate bending forces within the raft. The mechanical sub-assemblies designed to apply this load are called the “raft hold-downs.” There are two hold-downs per RTM, positioned on two opposite sides of the tower, with springs sustaining the hold-down force (see Figure 10-11).
+The RSA is designed to be supported in the cryostat on a three-ball kinematic mount. The balls and their cup mounts are an integral part of the cryostat support grid, whose lattice-like structure forms “bays” into which each RTM is installed. V-grooves on the three mounts of the baseplate engage these balls. A total spring load equivalent to 5g is imposed on the RSA to assure unchanging contact pressure in all camera attitudes and slewing motions, with this load being applied directly over the center of each ball to eliminate bending forces within the raft. The mechanical sub-assemblies designed to apply this load are called the “raft hold-downs.” There are two hold-downs per RTM, positioned on two opposite sides of the tower, with springs sustaining the hold-down force (see Figure \ref{fig:Fig11}).
 While there must be the inherent electrical and thermal connections from the RSA to the tower, it is advantageous to mechanically uncouple the RSA from the remainder of the RTM in order to eliminate as many sources of image plane distortion as possible. For this reason the forces of the hold-down springs are not allowed to remain reacted by the tower (as they are during RTM construction), but are instead transferred to the support grid after the RTM is installed on the cryogenically-cooled cryoplate. Once decoupled, the REC position is independent of the RSA position. Furthermore, neither static deflection of the grid due to weight nor thermal motion during transient cool-down can induce any effect on the position or shape of the RSA on the kinematic mount after this decoupling is accomplished.
 To transfer the spring load from tower to grid, each hold-down employs a captive screw. There is very limited access to the area inside each grid bay and total inaccessibility from the image plane side of the RTM, so the screw is actuated through cut-outs provided in the cryoplate. Rotating each screw the specified number of turns compresses the spring the appropriate amount and completes the load transfer from REC to grid bay wall. 
- 
-Figure 10-11: Hold-downs on RTM
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure11}
+\caption{Hold-downs on RTM.}
+\label{fig:Fig11}
+\end{center}
+\end{figure}
+
 The maximum stress in either hold-down is on the back-side of the arm. The highest localized von Mises stress in this location is around 81 MPa (yield strength for the material is ~240 MPa). The average shear stress on the pin attaching the hold-down to the RSA is 28 MPa.
 10.4.5	Thermal and Mechanical Analysis
 ANSYS FEA software has been used along with many hand calculations and spreadsheets to determine the thermal and mechanical response of the RTM to the loads imposed on it. Analysis simulations have been run for thermal steady state and transient behavior and static structural and modal/vibration. The model analyzed is a robust compilation, including all materials and interfaces between components within the complex assembly. Where applicable, and without reducing accuracy, some simplifications and de-featuring have been implemented for enhancing convergence and reducing run time. The simplifications involve eliminating features (such as threads) and parts insignificant to the thermal, stress, and deflection responses, and combining some mated parts into new single parts where possible. However, the simplified model itself is not all that simple, primarily due to the fact that the mechanical supports and thermal paths of the CCDs are not mirror symmetric about the transverse axes. Therefore, the entire RTM must be modeled to obtain accurate results. 
@@ -146,116 +229,268 @@ The thermal path from the focal plane to the heatsinks is through the CCD sensor
 
 \subsection{The RTM FEA Model}
 The cryofluid passage surfaces in the plate are set to -130 C, consistent with the fluid properties. The coldplate temperature is set to -40 C, also consistent with the properties of that fluid.
-Imperfect conductivity across mating part faces is accounted for in the ANSYS software by manually entering conductance values based on the materials mated. The applied values have been taken from various published sources, as well as from the results of the contact resistance testing performed, and represent average-to-conservative values as shown in Table 10-2.
-Table 10-2: Contact conductance values across various part faces, between the cryoplate and RTM interfaces
-Value [W/m$^2$~C]
-Applied Joints
-Infinite
-soldered joints
-10,000	Cu to Cu, Si to Si, etc. with good contact
-2000
-Cu to SS and all bolted connections
-50002
-Cu to CeSiC
-25003
-CeSic to CeSiC
-10003
-Cu to G-10
-1 Apiezon-N or Indium applied as interposer; 2 Based on data for Cu/Si joint, no interposer; 3 estimate
-The heat inputs to the focal plane from lens L3 plus CCD chip functions (applied to surface), and from CCD amplifiers (applied to actual locations of amplifiers within the CCD substrate), are indicated in Figure 10-12; and heat inputs to one REB are shown from the FPGA side in Figure 10-13. The other side of the REB does not have an FPGA and all other components are mirrored. Note that the commercial components which replaced the CABAC dissipate less heat. 
- 
-Figure 10-12: Thermal model, focal plane inputs
- 
-Figure 10-13: Thermal model, REB inputs
+%Imperfect conductivity across mating part faces is accounted for in the ANSYS software by manually entering conductance values based on the materials mated. The applied values have been taken from various published sources, as well as from the results of the contact resistance testing performed, and represent average-to-conservative values as shown in Table 10-2.
+%Table 10-2: Contact conductance values across various part faces, between the cryoplate and RTM interfaces
+%Value [W/m$^2$~C]
+%Applied Joints%
+%Infinite
+%soldered joints
+%10,000	Cu to Cu, Si to Si, etc. with good contact%
+%2000
+%Cu to SS and all bolted connections
+%50002
+%Cu to CeSiC%
+%25003
+%CeSic to CeSiC
+%10003
+%Cu to G-10
+%1 Apiezon-N or Indium applied as interposer; 2 Based on data for Cu/Si joint, no interposer; 3 estimate
+
+The heat inputs to the focal plane from lens L3 plus CCD chip functions (applied to surface), and from CCD amplifiers (applied to actual locations of amplifiers within the CCD substrate), are indicated in Figure \ref{fig:Fig12}; and heat inputs to one REB are shown from the FPGA side in Figure \ref{fig:Fig13}. The other side of the REB does not have an FPGA and all other components are mirrored. Note that the commercial components which replaced the CABAC dissipate less heat. 
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure12}
+\caption{Thermal model, focal plane inputs.}
+\label{fig:Fig12}
+\end{center}
+\end{figure} 
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure13}
+\caption{Thermal model, REB inputs.}
+\label{fig:Fig13}
+\end{center}
+\end{figure} 
 
 \subsection{Steady State Thermal Analysis}
-From an initial temperature of 22 C, the model cools to an equilibrium condition governed by the cryoplate, the heat inputs, the materials chosen, and the conductances assigned. The resulting overall temperature profiles of the RSA sub-components are shown in Figure 10-14. The imaging surface shows an expected temperature gradient, cooler toward the middle, reflecting the cooling paths connected toward the center underside of the part. The maximum and minimum temperatures from simulating the focal plane surface are -98.6 C and -100.7 C, respectively. This is consistent with the goal temperature of -100 C, and with the allowed temperature differences across the focal plane.
-The temperature profiles of the tower and its components (REBs, thermal straps, REC walls) are shown in Figure 10-15. Again, one sees the cooler REB regions near the coldplate attachment points with a maximum $\Delta$T along the REB of about 30C.
+From an initial temperature of 22\degsym C, the model cools to an equilibrium condition governed by the cryoplate, the heat inputs, the materials chosen, and the conductances assigned. The resulting overall temperature profiles of the RSA sub-components are shown in Figure \ref{fig:Fig14}. The imaging surface shows an expected temperature gradient, cooler toward the middle, reflecting the cooling paths connected toward the center underside of the part. The maximum and minimum temperatures from simulating the focal plane surface are $-$98.6\degsym C and $-$100.7\degsym C, respectively. This is consistent with the goal temperature of $-$100\degsym C, and with the allowed temperature differences across the focal plane. The temperature profiles of the tower and its components (REBs, thermal straps, REC walls) are shown in Figure \ref{fig:Fig15}. Again, one sees the cooler REB regions near the coldplate attachment points with a maximum $\Delta$T along the REB of about 30\degsym C.
 
 \subsection{Static Structural Analysis}
 This analysis was run to determine the deflection of the focal plane due to gravity and the hold-down forces alone. It gives a baseline for comparison with the deflection that includes thermal effects. The gravity direction is applied perpendicular to the focal plane surface and directed away from it, simulating the camera pointing toward earth.
-Shown in Figure 10-16, the flatness of the sensor imaging surface is 119 nm, with the crown of the bow in the center area, parallel to the baseplate ribs underneath, as expected. Each CCD is bowed individually about 640 nm, which masks the raft bowing to a large degree. The larger amount of bowing in the CCDs is primarily due to the single unsupported corner of each CCD. All of these deflections meet specification.
-Looking at raft motion from the underside in Figure 10-17 shows that the kinematic mounts as modeled are properly allowing raft contraction to occur along the V-grooves. In addition, the stress plot shows that the Von Mises stress at these grooves is very low. Both of these conditions are important to verify that deflections in the raft are occurring for reasons that are appropriate, not by improper over-constraint. This model presented does not include the frictional effects between the mounting balls and the V-grooves.
+Shown in Figure \ref{fig:Fig16}, the flatness of the sensor imaging surface is 119 nm, with the crown of the bow in the center area, parallel to the baseplate ribs underneath, as expected. Each CCD is bowed individually about 640 nm, which masks the raft bowing to a large degree. The larger amount of bowing in the CCDs is primarily due to the single unsupported corner of each CCD. All of these deflections meet specification.
+Looking at raft motion from the underside in Figure \ref{fig:Fig17} shows that the kinematic mounts as modeled are properly allowing raft contraction to occur along the V-grooves. In addition, the stress plot shows that the Von Mises stress at these grooves is very low. Both of these conditions are important to verify that deflections in the raft are occurring for reasons that are appropriate, not by improper over-constraint. This model presented does not include the frictional effects between the mounting balls and the V-grooves.
 Figure 10-18 shows the deflection of the Raft surface with the thermal contraction and the mechanical response superimposed. The resulting flatness is well within tolerance (.013 mm requirement). The total height change of ~.005 mm can be accommodated in the design.
 
-Figure 10-14: Modeled RSA temperatures
- 
-Figure 10-15: Tower steady-state temperatures
- 
-Figure 10-16: Gravity deflection from FEA analysis
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure14}
+\caption{Modeled RSA temperatures.}
+\label{fig:Fig14}
+\end{center}
+\end{figure}
 
-Figure 10-17: Kinematic mounts
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure15}
+\caption{Science Raft Tower steady-state temperatures).}
+\label{fig:Fig15}
+\end{center}
+\end{figure} 
  
-Figure 10-18: Raft surface deflection, mechanical plus thermal
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure16}
+\caption{Gravity deflection from FEA analysis.}
+\label{fig:Fig16}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure17}
+\caption{Kinematic mounts.}
+\label{fig:Fig17}
+\end{center}
+\end{figure}
+ 
+ \begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure18}
+\caption{Raft surface deflection, mechanical plus thermal.}
+\label{fig:Fig18}
+\end{center}
+\end{figure}
  
 \section{Science Raft Tower Module (RTM) Assembly}
 
 The LSST camera project plan calls for the RTMs to be assembled and tested at BNL, and then shipped to SLAC for integration into the LSST instrument. This section describes the plans for the assembly of RTMs. 
 
 \subsection{Raft Tower Assembly and Test Facility at BNL}
-A ~1750 ft2 ISO 7 cleanroom has been built in the BNL physics building (see Figure 10-19).
- 
-Figure 10-19: Raft assembly cleanroom design
- Construction funds were provided by Scientific Laboratories Infrastructure (SLI) program within the DOE Office of Science for the construction and revitalization of general purpose infrastructure as part of a series of major lab and office space renovations that will improve facilities in the Physics and Chemistry departments at BNL. 
+A ~1750 ft2 ISO 7 cleanroom has been built in the BNL physics building (see Figure \ref{fig:Fig19}).
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure19}
+\caption{Raft assembly cleanroom design.}
+\label{fig:Fig19}
+\end{center}
+\end{figure} 
+
+Construction funds were provided by Scientific Laboratories Infrastructure (SLI) program within the DOE Office of Science for the construction and revitalization of general purpose infrastructure as part of a series of major lab and office space renovations that will improve facilities in the Physics and Chemistry departments at BNL. 
 Acceptance testing of the CCDs, construction of the 25 RSAs, metrology tests, integration with raft electronics, and final raft testing has been performed within this facility. In order to meet schedule objectives for science raft construction over a 2-1/2 year funding period, the facility will have two dedicated single CCD-test stations, two metrology stations, two raft assembly stations and a station for conducting qualification tests of a fully integrated RTM. The room is separated by an ESD-protective curtain to partition the space and offer an environment that is better controlled due to limited activities in that area. This space contains almost all the work requiring sensor surface exposure to air. A laminar flow hood is to be used during testing and assembly steps which require the most amount of exposure, i.e. RSA assembly. 
 
 \subsection{Science Raft Assembly Sequence}
-Providing a detailed description of the assembly process is outside the scope of this chapter. What follows are the highlights of the major test and assembly steps, as outlined in Figure 10-20.
+Providing a detailed description of the assembly process is outside the scope of this chapter. What follows are the highlights of the major test and assembly steps, as outlined in Figure \ref{fig:Fig20}.
 The assembly procedure begins by populating the raft with nine CCDs acceptable for LSST: a statistically sampled group of sensors which were previously checked for metrology and electro-optical performance. During assembly and testing of the RSA and RTM, protective tooling is applied to encase the CCDs and other sub-components from damage. Specialized measuring equipment and dedicated tooling is then used to check the mosaic flatness of the nine CCDs on the RSA before continuing the construction of the full RTM. The protective tooling also provides mounting features throughout assembly and testing.
 The two thick copper tower walls are the paths for heat removal from the RTM. The two walls orthogonal to them complete the mechanical structure. To assure final coplanarity of the mounting surfaces of the heat path copper walls to the cryoplate, all four walls are pre-assembled and held in position relative to each other via precision dowel pins in the corners, then the copper interface surfaces for the cryoplate are pre-machined as an assembled unit. The walls are then disassembled but are kept together as a set. The dowel pins, asymmetrically placed to allow reassembly of the four walls in only one orientation, guarantee proper mating to the cryoplate.
 The Raft Tower Module (RTM) assembly uses specialized tooling to hold and manipulate the RTM sub-assemblies during construction, such as the RSA, REC walls and REBs. The polyimide flexi-cables and their integral nano-connectors are accessible in the fixture. The nano-connectors are mated to the REBs in a prescribed order to best facilitate access to each connector. The REC and other components are assembled around the REBs. The REB attachment to the REC utilizes an attachment system to allow for thermal expansion, as the REBs are at a different temperatures than the REC walls. The distal end of each hold-down is attached to each of the three raft mounting points, followed by the completion of each hold-down assembly to the REC walls. Each hold-down mechanism is adjusted to provide a defined pre-load between the REC and the RSA assembly using a temporary support structure. After the RTM performance is measured and qualified, it is placed into a custom designed environmentally controlled crate that is used for shipment and long-term storage.
 
- 
- 
-Figure 10-20: Abbreviated Science Raft assembly sequence
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure20}
+\caption{Abbreviated Science Raft assembly sequence.}
+\label{fig:Fig20}
+\end{center}
+\end{figure}
 
 \section{Corner Rafts}
 
-Four special purpose rafts, called corner rafts, are mounted at the corners of the LSST science Camera,and contain wavefront sensors and guide sensors. A single design can accommodate two guide sensorsand one split-plane wavefront sensor integrated into the four corner locations in the camera. Althoughcontained within the LSST Camera, the corner rafts have a broader role in the operation of thetelescope.
+Four special purpose rafts, called corner rafts, are mounted at the corners of the LSST science Camera,and contain wavefront sensors and guide sensors. A single design can accommodate two guide sensorsand one split-plane wavefront sensor integrated into the four corner locations in the camera. Althoughcontained within the LSST Camera, the corner rafts have a broader role in the operation of thetelescope. The location of the corner rafts and their sensors are shown in Figure \ref{fig:Fig21}.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure21}
+\caption{Corner raft locations, showing wavefront sensors (green) and guiders (yellow).}
+\label{fig:Fig21}
+\end{center}
+\end{figure}
 
 \subsection{Corner Raft Requirements}
 
-The location of the corner raft is dictated by the requirement that the wavefront sensor cover 4 fieldangles in a square geometry with the highest possible atmospheric de-correlation in order toreconstruct the phase at each mirror. The guide sensors have a similar requirement. This has driven thecorner raft to be located at the edge of the field and therefore at the edge of the sensor array. Thus thecorner raft sub-system has a triangular cross section as opposed to the square cross section of thescience raft. Similar to the science rafts, many of the design challenges relate to packaging the requiredfunctionality in a tightly constrained volume.Another driver is related to the leveraging of the electronics system and infrastructure (such as thermalmanagement and mechanical stability) from the science raft development effort. The challenge for thecorner raft is to re-package the electronics chain used for the science sensor CCDs such that itLSST Camera Final Design Report (LCA-11591-B)197accommodates the corner raft geometry while maintaining the logical functionality of the design.Interfaces to the cryo plate and cold plate and the contamination control features of the corner raft alsohave to be similar to the science raft.The precision required in the placement of the sensors has been shown to be similar to that required forthe science sensors and therefore most of the design principles and mechanisms are similar to thoseused in the science raft.
-\subsection{Corner Raft Design}
+The location of the corner raft is dictated by the requirement that the wavefront sensor cover 4 fieldangles in a square geometry with the highest possible atmospheric de-correlation in order toreconstruct the phase at each mirror. The guide sensors have a similar requirement. This has driven thecorner raft to be located at the edge of the field and therefore at the edge of the sensor array. Thus thecorner raft sub-system has a triangular cross section as opposed to the square cross section of thescience raft. Similar to the science rafts, many of the design challenges relate to packaging the requiredfunctionality in a tightly constrained volume.Another driver is related to the leveraging of the electronics system and infrastructure (such as thermalmanagement and mechanical stability) from the science raft development effort. The challenge for thecorner raft is to re-package the electronics chain used for the science sensor CCDs such that itaccommodates the corner raft geometry while maintaining the logical functionality of the design.Interfaces to the cryo plate and cold plate and the contamination control features of the corner raft alsohave to be similar to the science raft.The precision required in the placement of the sensors has been shown to be similar to that required forthe science sensors and therefore most of the design principles and mechanisms are similar to thoseused in the science raft.
+
+% corner raft figures start as Figure21\subsection{Corner Raft Design}
 
 The corner raft sub-system is responsible for acquiring curvature wavefront data for the active opticssystem. The corner raft must acquire intra and extra focal images at 4 locations at the edges of the focalplane that will be used by the Telescope Control System to estimate the wavefront and, throughreconstruction, provide inputs to the active optics controller. Images are collected in parallel with thescience images and follow the corresponding exposure time and cadence (nominally 15 second exposureand 2 second readout time). The current specification requires flexibility to adjust the intra to extra focalseparation up to 4.8mm from the nominal 4mm separation. This will be set at the time of final assemblybased on final analysis and tests.
 
 The guide sensor specifications have been set to ensure that the servo loop jitter for point spreadfunctions on the sky better than 0.6 arc-sec FWHM will be less than 0.02 arc-sec FWHM. Based on theservo-loop implementation, this requirement can also be expressed as a single guide sensor rmscentroid accuracy of 0.04arc-sec = 0.2 pixels with worst case flux of 800e- (u-band)
-Table 11-1: Wavefront sensor specificationsKey requirement ValuePixel Size 10 $\mu$m square pixelsReadout Noise 10 e- rmsIntra/Extra focal sensor separation 4 mm $\pm$-0.1 mmIntegration time 15 sReadout Time 2 sSensor Flatness/z-axis tolerance $\pm$15 $\mu$mThe corner raft sub-system is also responsible for acquiring small images centered on selected brightstars at a nominal 9Hz rate. These images are used to estimate the pointing variation during theexposure and provide input to the telescope control tracking system. The guider system interfacespecifies the performances of the guide sensors as described in Table 11-2.Table 11-2: Guide sensor specificationsKey requirement ValuePixel Size 10 $\mu$m square pixelsReadout Noise 9 e- rmsIntegration time 50 msFrame Rate 9 HzWindow size 50 x 50 pixelsSensor Flatness/z-axis tolerance $\pm$30 $\mu$m
-Number of Guide Sensors 8
+%Table 11-1: Wavefront sensor specifications%Key requirement Value%Pixel Size 10 $\mu$m square pixels%Readout Noise 10 e- rms%Intra/Extra focal sensor separation 4 mm $\pm$-0.1 mm%Integration time 15 s%Readout Time 2 s%Sensor Flatness/z-axis tolerance $\pm$15 $\mu$m%The corner raft sub-system is also responsible for acquiring small images centered on selected bright%stars at a nominal 9Hz rate. These images are used to estimate the pointing variation during the%exposure and provide input to the telescope control tracking system. The guider system interface%specifies the performances of the guide sensors as described in Table 11-2.%Table 11-2: Guide sensor specifications%Key requirement Value%Pixel Size 10 $\mu$m square pixels%Readout Noise 9 e- rms%Integration time 50 ms%Frame Rate 9 Hz%Window size 50 x 50 pixels%Sensor Flatness/z-axis tolerance $\pm$30 $\mu$m
+%Number of Guide Sensors 8
 
 \subsection{Corner Raft Architecture within the LSST Camera}
-The corner raft subsystem will provide images from 8 guide sensors and 4 wavefront split sensors. Theimages are collected at the focal plane by those sensors. The sensors are readout by the analogelectronics located in the corner raft towers. The electronics in each corner raft tower reads the datafrom the sensors, processes and digitizes the signals, and transmits the digitized data to the dataacquisition (DAQ) systems over a high speed serial interface (PGP link). The DAQ provides access to thewavefront images to either the Telescope Control System (TCS) for close loop operation or to the datamanagement system for archival storage. The DAQ provides access to the guide star image data and theguide system is responsible for computing the star centroid location and estimating the changes as theyare measured at 9Hz. The telescope decides whether the information is used to close the loop or not,depending on the current mode of operation. The Observatory Control System (OCS) initiatescommands resulting in images being acquired by the corner raft sub-system. The OCS coordinates withthe Camera Control System (CCS) for camera specific actions including the corner raft operating stepsand the TCS for active control.
+The corner raft subsystem will provide images from 8 guide sensors and 4 wavefront split sensors. Theimages are collected at the focal plane by those sensors. The sensors are readout by the analogelectronics located in the corner raft towers. The electronics in each corner raft tower reads the datafrom the sensors, processes and digitizes the signals, and transmits the digitized data to the dataacquisition (DAQ) systems over a high speed serial interface (PGP link). The DAQ provides access to thewavefront images to either the Telescope Control System (TCS) for close loop operation or to the datamanagement system for archival storage. The DAQ provides access to the guide star image data and theguide system is responsible for computing the star centroid location and estimating the changes as theyare measured at 9Hz. The telescope decides whether the information is used to close the loop or not,depending on the current mode of operation. The Observatory Control System (OCS) initiatescommands resulting in images being acquired by the corner raft sub-system. The OCS coordinates withthe Camera Control System (CCS) for camera specific actions including the corner raft operating stepsand the TCS for active control. The conceptual block diagram of the corner raft system in shown in Figure \ref{fig:Fig22}.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure22}
+\caption{Corner raft system component block diagram.}
+\label{fig:Fig22}
+\end{center}
+\end{figure}
 
 \section{Corner Raft Tower Mechanical Design and Analysis}
-\subsection{Corner Raft Sensor Assembly}Each sensor package will be mounted to the corner raft structure by means of 3 threaded studs + 2 pins,Belleville washers and locking nuts. Removable, thermally-conductive spacer/shims will be used to setthe height of the sensor surfaces above the corner raft. Identical corner rafts will be mounted in fourcorner locations on the GRID structure (which also supports the science rafts) by means of an adjustable3-point ball-and-vee kinematic mount design. The concept for this mount system is shown in Figure 11-3.
+\subsection{Corner Raft Sensor Assembly}Each sensor package will be mounted to the corner raft structure by means of 3 threaded studs + 2 pins,Belleville washers and locking nuts. Removable, thermally-conductive spacer/shims will be used to setthe height of the sensor surfaces above the corner raft. Identical corner rafts will be mounted in fourcorner locations on the GRID structure (which also supports the science rafts) by means of an adjustable3-point ball-and-vee kinematic mount design. The concept for this mount system is shown in Figure \ref{fig:Fig23}, 
+and the integration of these into a corner raft is shown in Figure \ref{fig:Fig24}.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure23}
+\caption{Side view of sensor-to-corner-raft grid mounting scheme.}
+\label{fig:Fig23}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure24}
+\caption{Guide and wavefront sensors on corner raft baseplate.}
+\label{fig:Fig24}
+\end{center}
+\end{figure}
 
 Two guide sensors are located in each of the 4 corner rafts (total of 8 guide sensors). The baselinedesign for guiders uses 4K x 4K LSST science CCD sensors with 10 micron pixels. The CCD sensors aredeep-depletion, back-illuminated devices with a highly segmented architecture. The readout electronicsare mounted on a custom printed circuit board and housed inside a metal enclosure for EMI shieldingand heat transfer to the cold plate. A pair of flat flex cables (identical to those used connectivity in thescience CCD array) mates to circuitry on the back-side of the CCD sensor package, and terminates in apair of 37-pin Nano-connectors for connection to the readout electronics board.
 
-LSST requires four wavefront sensors located in the corner rafts at the periphery of the focal plane. Adepiction of the wavefront sensor concept is shown in Figure 11-5. Two 2K x 4K segmented CCDspackages will be mounted on a “step plate” and offset relative to the science focal plane to produceintra and extra focal images. An offset of roughly $\pm$2mm from the science focal plane is anticipated.Wavefront sensor CCDs will share the layout and processing of the science sensors, and have similarperformance as science CCDs regarding quantum efficiency, point spread function, read noise, andreadout speed. Detailed mechanical specifications such as fill factor, flatness, parallelism of the intraand extra focal sections, and temperature sensing will be validated by laboratory measurements.
+LSST requires four wavefront sensors located in the corner rafts at the periphery of the focal plane. Adepiction of the wavefront sensor concept is shown in Figure \ref{fig:Fig25}. Two 2K x 4K segmented CCDspackages will be mounted on a “step plate” and offset relative to the science focal plane to produceintra and extra focal images. An offset of roughly $\pm$2mm from the science focal plane is anticipated.Wavefront sensor CCDs will share the layout and processing of the science sensors, and have similarperformance as science CCDs regarding quantum efficiency, point spread function, read noise, andreadout speed. Detailed mechanical specifications such as fill factor, flatness, parallelism of the intraand extra focal sections, and temperature sensing will be validated by laboratory measurements.
 
-The wavefront sensor mechanical alignment is tied to the science sensor array best fit plane as it is acritical component of wavefront correction. The details of the overall mechanical alignmentrequirements applicable to the corner raft are shown in Figure 11-6.
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure25}
+\caption{Wavefront sensor assembly.}
+\label{fig:Fig25}
+\end{center}
+\end{figure}
+
+The wavefront sensor mechanical alignment is tied to the science sensor array best fit plane as it is acritical component of wavefront correction. The details of the overall mechanical alignmentrequirements applicable to the corner raft are shown in Figure \ref{fig:Fig26}.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure26}
+\caption{Corner raft sensor mechanical alignment and tolerance requirements.}
+\label{fig:Fig26}
+\end{center}
+\end{figure}
 
 The back side of the corner raft features three radially-arrayed vees ground into the Raft material. Thevees uniquely define the position of the corner raft with respect to silicon-nitride ceramic balls that arefixed in cups mounted on the grid. This forms a kinematic connection that isolates the corner (andscience) rafts from grid distortion due to external dynamic and transient loads, assembly tolerances, andto the expected thermal motions due to differential contraction during cooling. The corner rafts areheld in position by springs that pre-load the corner rafts against their kinematic coupling to the grid,producing a uniform, invariant loading. The deflection of grid and corner raft due to the spring loading iscompensated for during initial integration, and remains unchanged in operation, independent of cameraorientation and temperature.The grid, science rafts, and corner rafts will be manufactured from a silicon-carbide ceramic matrixcomposite. This material is used for lightweight and stable space-borne structures, including focalplanes, optical benches, and mirrors. The high modulus, high thermal conductivity, near-zero expansioncoefficient and improved fracture toughness of the ECM CeSic material makes it ideal for the grid,science raft, and corner raft structures. A closed-loop thermal control system will be used to adjust thetemperature of the corner rafts, thereby maintaining a suitable and stable operating temperature forthe sensors.
 
 \subsection{Corner Raft Tower Concept}
-Each corner raft tower contains one wavefront sensor and two guide sensors and dedicated electronics.The mechanical and thermal design of the corner rafts is as similar as possible to the science rafts.The electronics for operating the wavefront and guide sensors are packaged within the volume behindthe detectors, similar to the science raft configuration, in a corner raft electronics crate (CREC) “Tower.”Electrical connections between sensors and front-end electronics boards are made by flat flex circuitcables. The electronics boards are thermally connected to the cold plate at about -40C by thermallyconductive straps. The grid supports as little mass as possible—only the sensor rafts and theirsupports—to reduce gravity induced deflections. The tower is supported by a neighboring cryogenically-cooledCryo Plate at about -130C temperature. Each corner raft is thermally connected, but structurallydecoupled, from the tower by use of thin copper thermal straps to remove the electrical and radiantheat load from each corner raft and conduct it back to the cryoplate. Details of the design for cornerraft/towers for the LSST camera are shown below.
+Each corner raft tower contains one wavefront sensor and two guide sensors and dedicated electronics.The mechanical and thermal design of the corner rafts is as similar as possible to the science rafts.The electronics for operating the wavefront and guide sensors are packaged within the volume behindthe detectors, similar to the science raft configuration, in a corner raft electronics crate (CREC) “Tower.”Electrical connections between sensors and front-end electronics boards are made by flat flex circuitcables. The electronics boards are thermally connected to the cold plate at about -40C by thermallyconductive straps. The grid supports as little mass as possible—only the sensor rafts and theirsupports—to reduce gravity induced deflections. The tower is supported by a neighboring cryogenically-cooledCryo Plate at about -130C temperature. Each corner raft is thermally connected, but structurallydecoupled, from the tower by use of thin copper thermal straps to remove the electrical and radiantheat load from each corner raft and conduct it back to the cryoplate. Details of the design for cornerraft/towers for the LSST camera are shown in Figure \ref{fig:Fig27}.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure27}
+\caption{CAD model of the corner raft tower.}
+\label{fig:Fig27}
+\end{center}
+\end{figure}
 
 \subsection{Corner Raft Mechanical Interfaces}
 
 \subsubsection{Corner Raft Cryo Plate Interface}
-The corner raft tower is a mechanical enclosure that contains the readout electronics boards for thewavefront and guide sensors and has a smaller “footprint” than the corner raft. The tower is fastenedto the cryo plate by a series of screws to provide mechanical support as well as the thermal path fromcorner raft CCDs to the cryo plate. The CRT also acts as a barrier to contaminants outgassed fromelectronics that could degrade the image quality of the CCDs (see Figure 11-8).The corner raft WREB (wavefront readout electronics board) and GREB (Guider readout electronicsboard) are passed through a triangular-shaped opening in the cryo plate during installation of the cornerraft tower module (CRTM) in the cryostat. Access to the captive screws for the two corner raft holddownmechanisms is through cut-outs in the cryo plate adjoining the opening for the WREB and GREB.
+The corner raft tower is a mechanical enclosure that contains the readout electronics boards for thewavefront and guide sensors and has a smaller “footprint” than the corner raft. The tower is fastenedto the cryo plate by a series of screws to provide mechanical support as well as the thermal path fromcorner raft CCDs to the cryo plate. The CRT also acts as a barrier to contaminants outgassed fromelectronics that could degrade the image quality of the CCDs (see Figure \ref{fig:Fig28}).The corner raft WREB (wavefront readout electronics board) and GREB (Guider readout electronicsboard) are passed through a triangular-shaped opening in the cryo plate during installation of the cornerraft tower module (CRTM) in the cryostat. Access to the captive screws for the two corner raft hold-downmechanisms is through cut-outs in the cryo plate adjoining the opening for the WREB and GREB.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure28}
+\caption{Corner raft to cryo plate interface.}
+\label{fig:Fig28}
+\end{center}
+\end{figure}
 
 \subsubsection{Corner Raft Cold Plate Interface}
 
-The corner raft tower is a mechanical structure that houses the readout electronics boards. Thermalconnections are made between cold bars on the WREB and GREB and cold plate "fingers" duringinstallation of CRTMs into the cryostat (see Figure 11-9). Copper blocks at the ends of copper braidedwire cables (connected to the cold bars on the REBs) are retracted within the profile of the REBs duringinsertion of the CRTMs into the cryostat, then extended and fastened to the cold plate fingers.
+The corner raft tower is a mechanical structure that houses the readout electronics boards. Thermalconnections are made between cold bars on the WREB and GREB and cold plate "fingers" duringinstallation of CRTMs into the cryostat (see Figure \ref{fig:Fig29}). Copper blocks at the ends of copper braidedwire cables (connected to the cold bars on the REBs) are retracted within the profile of the REBs duringinsertion of the CRTMs into the cryostat, then extended and fastened to the cold plate fingers.
 
-\subsubsection{Corner Raft Cryostat Interface} The designs for the mechanical and thermal interfaces between the corner rafts and the cryostat are assimilar as the possible to the interface designs for the science rafts. The mechanical interface betweenthe corner raft and the grid provides precise mechanical location and support for the corner raft sensorswith respect to the focal plane. The mechanical and thermal interfaces between the cryostat and cornerraft towers support the electronics to control and read out the CCDs and provide the thermal paths forremoval of the heat from the corner raft CCDs and electronics without adversely affecting theperformance of the science raft subsystems.
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure29}
+\caption{Corner raft to cold plate interface.}
+\label{fig:Fig29}
+\end{center}
+\end{figure}
+
+\subsubsection{Corner Raft Cryostat Interface} 
+The designs for the mechanical and thermal interfaces between the corner rafts and the cryostat are assimilar as the possible to the interface designs for the science rafts. The mechanical interface betweenthe corner raft and the grid provides precise mechanical location and support for the corner raft sensorswith respect to the focal plane. The mechanical and thermal interfaces between the cryostat and cornerraft towers support the electronics to control and read out the CCDs and provide the thermal paths forremoval of the heat from the corner raft CCDs and electronics without adversely affecting theperformance of the science raft subsystems. This is shown in Figure \ref{fig:Fig30}.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure30}
+\caption{Corner raft to cryostat interface.}
+\label{fig:Fig30}
+\end{center}
+\end{figure}
 
 \subsubsection{Corner Raft Thermal and Structural Analysis}
-Thermal steady-state finite element analysis results of a simplified corner raft tower model, withaverage REBs power (23.5W), 2.7W heat load on the corner raft sensor assembly, and temperatures atthe cryo plate interface fixed at -130C and at the cold plate interface fixed at -40C, are shown in Figure11-11. Makeup heat of $\sim$0.5W from ohmic heaters mounted on the backside of the corner raft arerequired to raise the temperature of the sensors to -100C. A closed-loop thermal circuit will be used toadjust the make-up heat on each corner raft to maintain a stable operating temperature for the sensorswith varying thermal loads.
+Thermal steady-state finite element analysis results of a simplified corner raft tower model, withaverage REBs power (23.5W), 2.7W heat load on the corner raft sensor assembly, and temperatures atthe cryo plate interface fixed at $-$130\degsym C and at the cold plate interface fixed at $-$40\degsym C, are shown in Figure\ref{fig:Fig31}. Makeup heat of $\sim$0.5W from ohmic heaters mounted on the backside of the corner raft arerequired to raise the temperature of the sensors to $-$100\degsym C. A closed-loop thermal circuit will be used toadjust the make-up heat on each corner raft to maintain a stable operating temperature for the sensorswith varying thermal loads.
 
-Preliminary structural finite element analysis of a simplified corner raft and sensors model, with thecorner raft kinematically supported by the vees on fixed balls, and including thermal loads, gravity andapplied spring forces, results in a ``z-axis" deformation of the corner raft and sensor surfaces of ~1 $\mu$m,meeting requirements.
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure31}
+\caption{Corner raft tower thermal analysis results.}
+\label{fig:Fig31}
+\end{center}
+\end{figure}
+
+Preliminary structural finite element analysis of a simplified corner raft and sensors model, with thecorner raft kinematically supported by the vees on fixed balls, and including thermal loads, gravity andapplied spring forces, results in a ``z-axis" deformation of the corner raft and sensor surfaces of ~1 $\mu$m,meeting requirements. The structural analysis results are illustrated in Figure \ref{fig:Fig32}. 
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure32}
+\caption{Corner raft structural analysis results.}
+\label{fig:Fig32}
+\end{center}
+\end{figure}
 
 \section{Corner Raft Tower Electronics}
 Data acquisition and control for the wavefront and guide sensors are managed using the sameinfrastructure as for the Science detectors. The corner raft tower contains four ASPIC ASICs for readingthe two guide sensor data and two ASPIC ASICs for the split wavefront sensor. The ASPIC implementsthe CCD readout and was developed specifically for LSST. The electronics used to read the CCD sensorsare schematically nearly identical to the science electronics and are simply re-packaged toaccommodate the smaller footprint and reduced numbers of channels.
@@ -263,7 +498,15 @@ Preliminary structural finite element analysis of a simplified corner raft and s
 The corner raft tower electronics provides all CCD biasing and clock signals, CCD signal amplification andlow noise analog signal processing, digitization, data collection, and transmission of image and metadatato the DAQ. The corner raft tower electronics also has the responsibility for monitoring and reporting avariety of metadata such as supply voltages and currents, precision temperature measurements, andoperating raft heaters to maintain the focal plane temperature. In addition, a significant ability todiagnose problems in situ will be part of the design. The video data from the CCDs will be transmittedvia two high speed serial links (one for both guide sensors, one for the wavefront sensor) to the DAQsystem. Analogous to the dual functionality of the corner raft (guiding and wavefront sensing) theelectronic is partitioned into 2 PCBs: one for the operation of the two guide sensors at high frame rateswith a total of 32 analog channels (GREB for Guider Readout Electronics Board) and one for theoperation of the wavefront sensor with 16 channels (WREB for Wavefront Readout Electronics Board).The two different CCD types (for guide sensor and wavefront sensor) will be very similar in terms of
 segmentation and readout and therefore will be interchangeable with respect to the electronics.Therefore it is foreseen to utilize the same basic electronics block for both PCB types. Still, someoptimization for the specific functionality will be implemented, especially to support the fast shift andregion of interest readout for the guide sensors. The CCDs will be connected to the readout boards viapolyimide flex leads. Length and layout of this connection is critical for noise and crosstalk performance.
 \subsubsection{Guide Sensor Electronics}The guide sensor electronics is based on the science sensor electronics and is responsible for providingclock signals and bias voltages to the CCDs as well as processing and digitizing the CCD output signals.The design uses the ASPIC integrated circuit to amplify and process the signal from the CCDs. Therequired CCD bias voltages and clock waveforms are generated by the DCBS block. The CCD back-sidebias is generated by an external power supply but a dedicated switch to enable this voltage is includedon the board. The circuitry is identical to the science sensor design, but the implementation is repackagedto fit the diagonally shaped corner raft tower. The guide sensor electronics services 2 CCDsand therefore is organized with two video stripes (each stripe using two ASPICs and 16 ADCs).Additionally, during operation the sequencing electronics is operated at 9Hz to meet the guide servoloop requirements.
-The two guide CCDs are serviced by an electronics board as shown in Figure 11-13.
+The two guide CCDs are serviced by an electronics board as shown in Figure \ref{fig:Fig33}.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure33}
+\caption{Guider readout electronics block diagram.}
+\label{fig:Fig33}
+\end{center}
+\end{figure}
 
 Even though the 2 guide sensors located in each corner raft are controlled using a single board, theirsequencing will be concurrent but different to accommodate different guide windows locations. Each
 guide sensor board also provides temperature sensing near various components on the board. Supportfor temperature monitoring and heating of the corner raft is also available in a similar fashion to thescience REB capabilities. Power supplies, bias voltage, as well as clock signal filtering are also available.The FPGA firmware is reconfigurable via the DAQ interface. Register content in the FPGA is accessible viathe GDS interface and this interface is used to handle the instruction set updates and meta-datatransfers (a few tens of words) defining CCD and ASPIC clock structure.Guide CCD operations are controlled by a synchronous readout processor implemented within the FPGAof the guide sensing electronics. The microcode for this processor is downloaded through the DAQ sothat the processor is completely unaware of the purpose of any particular code. This architecture isparticularly useful in the case of the guide sensor for two reasons. First, the same electronics designused in the science sensor electronics can be re-used in the corner raft with only changes to thedownloaded firmware needed. Second, the windowed operation can be simplified or upgraded byloading new code to the electronics as needed.The guide sensing CCD sequences are more complicated than science raft sequences, but it is expectedthat the code would be the same except for guide window coordinates. A possible guider sequenceimplementation compatible with the overall guider timing is given below:
@@ -286,7 +529,15 @@ guide sensor board also provides temperature sensing near various components on 
 
 \subsection{Wavefront Sensing Readout Electronics}
 
-As mentioned previously, the wavefront sensing electronics is based on the science sensor electronicsand is responsible for providing clock signals and bias voltages to the CCDs as well as output signalprocessing and digitization. The circuitry is practically identical to the guide sensor electronics but theimplementation is re-packaged to fit the diagonally shaped corner raft tower and simplified to a singlestrip due to the need of controlling a single equivalent 4kx4k sensor. In contrast to the guide sensorelectronics, this board will not include trim-heater circuitry.The split CCD sensor, constructed of two identical CCDs, in a corner raft tower is serviced by a wavefrontreadout board (WREB) as shown in Figure 11-14.
+As mentioned previously, the wavefront sensing electronics is based on the science sensor electronicsand is responsible for providing clock signals and bias voltages to the CCDs as well as output signalprocessing and digitization. The circuitry is practically identical to the guide sensor electronics but theimplementation is re-packaged to fit the diagonally shaped corner raft tower and simplified to a singlestrip due to the need of controlling a single equivalent 4kx4k sensor. In contrast to the guide sensorelectronics, this board will not include trim-heater circuitry.The split CCD sensor, constructed of two identical CCDs, in a corner raft tower is serviced by a wavefrontreadout board (WREB) as shown in Figure \ref{fig:Fig34}.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure34}
+\caption{Wavefront sensing electronics block diagram.}
+\label{fig:Fig34}
+\end{center}
+\end{figure}
 
 \subsection{Wavefront Sensing Electronics Interfaces}
 \subsubsection{Power Supply Interface}The power distribution system provides a number of different potentials to the wavefront sensingelectronics in the corner raft. Those voltages are identical to those provided for the guider.
@@ -300,12 +551,37 @@ As mentioned previously, the wavefront sensing electronics is based on the scien
 during subsequent camera integration and commissioning. Sensors and electronic sub-assemblies aremodular and self-contained, allowing them to be installed, removed, and serviced with minimaldisturbance of neighboring components.After assembly and system testing, each corner raft tower will be integrated into the LSST Camera. Thesame procedure and installation tooling on a gantry motion control system envisioned for integration ofscience raft towers will be used for integration of corner raft towers into the Camera cryostat.
 
 \subsection{Corner Raft Assembly Sequence}
-Corner raft-specific assembly fixtures and procedures are adaptations from science raft assembly.Sensors will be assembled into corner rafts in a face-down orientation to allow easy access to theinstallation mechanism and to minimize the potential for surface contamination and accidents.Installation rods are screwed onto the ends of two of the threaded stud legs on the sensor package.Using a handling fixture, the sensor package with flex cables attached is pulled into contact with thecorner raft. The taper on the rods is designed to fully engage the mounting holes in the corner raftbefore the sensor package overlaps any neighboring sensors.Figure 11-15: Wave front and guide sensor insertion toolingAfter sensors are installed and leveled in the corner raft, a protective lid will be fastened to the cornerraft sensor assembly (CRSA) to protect the sensors from particulates and contamination. The thermalstraps, readout electronics, tower sides, and spring-loaded yoke hold-down sub-assemblies areprogressively connected to the CRSA (see Figure 11-16). A conductance barrier (to separate the ultracleanfocal plane from the support electronics) is formed during assembly by the installation of barshapedparts between thermal straps and sensor flex cables across the front end of the tower.
+Corner raft-specific assembly fixtures and procedures are adaptations from science raft assembly.Sensors will be assembled into corner rafts in a face-down orientation to allow easy access to theinstallation mechanism and to minimize the potential for surface contamination and accidents.Installation rods are screwed onto the ends of two of the threaded stud legs on the sensor package.Using a handling fixture, the sensor package with flex cables attached is pulled into contact with thecorner raft. The taper on the rods is designed to fully engage the mounting holes in the corner raftbefore the sensor package overlaps any neighboring sensors. Figure \ref{fig:Fig35} shows the 
+corner raft assembly jig. 
 
-After sensors are installed and leveled in the corner raft, a protective lid will be fastened to the cornerraft sensor assembly (CRSA) to protect the sensors from particulates and contamination. The thermalstraps, readout electronics, tower sides, and spring-loaded yoke hold-down sub-assemblies areprogressively connected to the CRSA (see Figure 11-16). A conductance barrier (to separate the ultracleanfocal plane from the support electronics) is formed during assembly by the installation of barshapedparts between thermal straps and sensor flex cables across the front end of the tower.
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure35}
+\caption{Wave front and guide sensor insertion tooling.}
+\label{fig:Fig35}
+\end{center}
+\end{figure}
+
+After sensors are installed and leveled in the corner raft, a protective lid will be fastened to the cornerraft sensor assembly (CRSA) to protect the sensors from particulates and contamination. The thermalstraps, readout electronics, tower sides, and spring-loaded yoke hold-down sub-assemblies areprogressively connected to the CRSA (see Figure \ref{fig:Fig36}). A conductance barrier (to separate the ultra-cleanfocal plane from the support electronics) is formed during assembly by the installation of bar-shapedparts between thermal straps and sensor flex cables across the front end of the tower.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure36}
+\caption{Corner raft tower assembly sequence.}
+\label{fig:Fig36}
+\end{center}
+\end{figure}
 
 \subsection{Corner Raft Installation into the Camera}
-Corner raft towers are modular and designed to use the same tooling and insertion, mounting,connecting, and testing processes developed for installation of the science raft towers into the cryostat.As with the integration of science raft towers, corner raft towers are inserted into the corner bays of thegrid and cryo plate from below, with the cryostat pointed downward in its integration stand. Aninsertion arm on the XYZ-gantry is extended down through the cryostat and fastened to the back-end ofthe corner raft tower. The corner raft tower is pulled into the cryostat through the grid; making smalladjustments with the XYZ-gantry to maintain alignment during insertion (see Figure 11-17).
+Corner raft towers are modular and designed to use the same tooling and insertion, mounting,connecting, and testing processes developed for installation of the science raft towers into the cryostat.As with the integration of science raft towers, corner raft towers are inserted into the corner bays of thegrid and cryo plate from below, with the cryostat pointed downward in its integration stand. Aninsertion arm on the XYZ-gantry is extended down through the cryostat and fastened to the back-end ofthe corner raft tower. The corner raft tower is pulled into the cryostat through the grid; making smalladjustments with the XYZ-gantry to maintain alignment during insertion (see Figure \ref{fig:Fig37}).
 
-As the corner raft reaches its mounting location, V-blocks on the corner raft contact the balls on thegrid, lifting the corner raft off the temporary supports on the tower. The tower is pulled an additional$\sim$ 4mm into the cryostat until its back end contacts the cryo plate. The same pre-loaded spring holddownmechanism design for the science rafts is used to allow this relative motion between the cornerraft and tower. The tower is the fastened to the cryo plate with screws, and the insertion arm isdisconnected from the back of the tower and retracted from the cryostat.Mechanical installation is completed by transferring the load of the hold-down springs from the sides ofthe Tower to support points on the back of the grid. This load transfer is accomplished by engaging thecaptive screws on the grid into the hold-down mechanisms to lock the corner raft into place on the grid.Following mechanical integration, the corner raft tower is electrically integrated by connecting thevacuum feedthrough pigtail connectors to the back of the electronics boards. Testing using equipmentconnected to the pigtails on the outside of the cryostat will be performed to verify that all internalconnectors are mated as well as ensure that all corner raft tower systems are functional.
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=6in]{./figures/PSTN011_Figure37}
+\caption{CRTM installation into the cryostat.}
+\label{fig:Fig37}
+\end{center}
+\end{figure}
+
+As the corner raft reaches its mounting location, V-blocks on the corner raft contact the balls on thegrid, lifting the corner raft off the temporary supports on the tower. The tower is pulled an additional$\sim$ 4mm into the cryostat until its back end contacts the cryo plate. The same pre-loaded spring hold-downmechanism design for the science rafts is used to allow this relative motion between the cornerraft and tower. The tower is the fastened to the cryo plate with screws, and the insertion arm isdisconnected from the back of the tower and retracted from the cryostat.Mechanical installation is completed by transferring the load of the hold-down springs from the sides ofthe Tower to support points on the back of the grid. This load transfer is accomplished by engaging thecaptive screws on the grid into the hold-down mechanisms to lock the corner raft into place on the grid.Following mechanical integration, the corner raft tower is electrically integrated by connecting thevacuum feedthrough pigtail connectors to the back of the electronics boards. Testing using equipmentconnected to the pigtails on the outside of the cryostat will be performed to verify that all internalconnectors are mated as well as ensure that all corner raft tower systems are functional.
 
